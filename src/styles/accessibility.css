@@ -1,0 +1,138 @@
+/**
+ * Accessibility Styles
+ * Story 2.7: Accessibility and Keyboard Navigation
+ */
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip navigation links */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 8px;
+  left: 8px;
+}
+
+/* Focus indicators - keyboard navigation only */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* For elements with custom focus styles */
+button:focus-visible,
+[role="button"]:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Card focus styles */
+.space-card:focus-visible,
+.filter-chip:focus-visible {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+  outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  /* Use system colors for high contrast */
+  .glassmorphism {
+    border: 2px solid currentColor;
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  button {
+    border: 2px solid currentColor;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+
+  button:hover {
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  button:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .bg-green-500,
+  .bg-green-100 {
+    background: GreenText !important;
+    color: Canvas !important;
+  }
+
+  .bg-red-500,
+  .bg-red-100 {
+    background: LinkText !important;
+    color: Canvas !important;
+  }
+
+  .bg-blue-500,
+  .bg-blue-100 {
+    background: Highlight !important;
+    color: HighlightText !important;
+  }
+
+  /* Ensure adequate borders */
+  .border {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Ensure interactive elements have pointer cursor */
+button,
+[role="button"],
+a,
+label,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
