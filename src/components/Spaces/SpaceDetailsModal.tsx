@@ -51,8 +51,8 @@ export function SpaceDetailsModal({ space, isOpen, onClose }: SpaceDetailsModalP
   const hasCurrentReservation = isOccupied && space.currentReservation;
   const canJoinSession =
     hasCurrentReservation &&
-    space.currentReservation.privacyOption === 'public' &&
-    space.currentReservation.currentCapacity < space.currentReservation.maxCapacity;
+    space.currentReservation?.privacyOption === 'public' &&
+    (space.currentReservation?.currentCapacity ?? 0) < (space.currentReservation?.maxCapacity ?? 0);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="max-w-5xl">
@@ -271,14 +271,14 @@ export function SpaceDetailsModal({ space, isOpen, onClose }: SpaceDetailsModalP
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-medium text-gray-900">Current Session</h4>
               <PrivacyIndicator
-                privacyOption={space.currentReservation.privacyOption}
-                currentCapacity={space.currentReservation.currentCapacity}
-                maxCapacity={space.currentReservation.maxCapacity}
+                privacyOption={space.currentReservation?.privacyOption || 'private'}
+                currentCapacity={space.currentReservation?.currentCapacity || 0}
+                maxCapacity={space.currentReservation?.maxCapacity || 0}
                 size="sm"
               />
             </div>
 
-            {space.currentReservation.privacyOption === 'public' && space.currentReservation.invitationToken ? (
+            {space.currentReservation?.privacyOption === 'public' && space.currentReservation?.invitationToken ? (
               <JoinSessionButton
                 invitationToken={space.currentReservation.invitationToken}
                 currentCapacity={space.currentReservation.currentCapacity}

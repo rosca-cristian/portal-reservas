@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { format, isPast, isFuture, parseISO } from 'date-fns';
-import { Calendar, Clock, MapPin, X } from 'lucide-react';
+import { Calendar, Clock, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import apiClient from '../lib/api/client';
 import { useReservationsStore } from '../features/reservations/stores/reservationsStore';

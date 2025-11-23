@@ -23,7 +23,6 @@ interface SpaceFormDialogProps {
 
 export function SpaceFormDialog({ isOpen, onClose, mode, initialData }: SpaceFormDialogProps) {
   const [photos, setPhotos] = useState<string[]>(initialData?.photos || [])
-  const [isEditorOpen, setIsEditorOpen] = useState(false)
   const [isPreviewMode, setIsPreviewMode] = useState(false)
   const [showCancelConfirm, setShowCancelConfirm] = useState(false)
   const queryClient = useQueryClient()

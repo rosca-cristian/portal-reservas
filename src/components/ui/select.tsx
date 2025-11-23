@@ -17,7 +17,6 @@ const Select = ({ children, value, onValueChange }: { children: React.ReactNode;
 
 const SelectTrigger = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement>>(
   ({ className = '', children, ...props }, ref) => {
-    const context = React.useContext(SelectContext)
     return (
       <button
         ref={ref}

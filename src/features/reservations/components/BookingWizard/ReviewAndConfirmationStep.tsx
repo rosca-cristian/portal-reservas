@@ -14,7 +14,7 @@ export default function ReviewAndConfirmationStep({
   spaceType = 'Individual Desk'
 }: ReviewAndConfirmationStepProps) {
   const [notes, setNotes] = useState('');
-  const { wizard, setStepTwoData, setWizardStep, resetWizard } = useReservationsStore();
+  const { wizard, setStepTwoData, setWizardStep } = useReservationsStore();
   const { mutate: createReservation, isPending } = useCreateReservation();
 
   const { stepOne, groupSize, privacyOption, isGroupRoom } = wizard;
@@ -32,8 +32,6 @@ export default function ReviewAndConfirmationStep({
 
     // Calculate end time (start time + duration)
     const [hours] = stepOne.startTime.split(':');
-    const endHour = parseInt(hours) + (stepOne.duration || 1);
-    const endTime = `${endHour.toString().padStart(2, '0')}:00`;
 
     const startDateTime = new Date(stepOne.date);
     startDateTime.setHours(parseInt(hours), 0, 0, 0);

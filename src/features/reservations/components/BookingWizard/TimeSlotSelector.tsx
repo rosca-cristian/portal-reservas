@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-import { useAvailability } from '../../../hooks/useAvailability';
+import { useAvailability } from '@hooks/useAvailability';
 
 interface TimeSlotSelectorProps {
   spaceId: string;

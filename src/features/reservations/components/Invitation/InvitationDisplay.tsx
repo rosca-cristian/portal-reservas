@@ -1,5 +1,5 @@
 import { QRCodeSVG } from 'qrcode.react';
-import { Share2, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { generateInvitationUrl } from '@/lib/utils/invitation';
 import CopyLinkButton from './CopyLinkButton';
 import ShareButton from './ShareButton';

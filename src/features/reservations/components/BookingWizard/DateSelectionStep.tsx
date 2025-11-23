@@ -22,7 +22,6 @@ export default function DateSelectionStep({
   const isGroupRoom = wizard.isGroupRoom;
 
   const today = new Date();
-  const maxDate = addDays(today, 7);
 
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date);

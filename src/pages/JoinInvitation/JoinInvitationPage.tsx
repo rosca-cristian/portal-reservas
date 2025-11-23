@@ -9,7 +9,7 @@ import { toast } from 'sonner';
 export default function JoinInvitationPage() {
   const { token } = useParams<{ token: string }>();
   const navigate = useNavigate();
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   const { data: invitation, isLoading, error } = useInvitation(token!);
   const joinMutation = useJoinInvitation();
 

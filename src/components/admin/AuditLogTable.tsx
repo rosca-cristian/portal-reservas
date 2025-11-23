@@ -1,7 +1,7 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Eye, RefreshCw } from 'lucide-react'
+import { RefreshCw } from 'lucide-react'
 import type { AuditLogEntry, AuditActionType } from '@/types/auditLog'
 
 interface AuditLogTableProps {
