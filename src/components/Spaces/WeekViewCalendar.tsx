@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import type { AvailabilityStatus } from '@/types/availability';
 import type { ApiResponse } from '@/types/api';
+import { apiClient } from '@/lib/api/client';
 
 interface TimeSlot {
   time: string;
@@ -62,8 +63,8 @@ export function WeekViewCalendar({
 
       for (const date of days) {
         const dateString = date.toISOString().split('T')[0]; // Format: YYYY-MM-DD
-        const response = await fetch(`/api/spaces/${spaceId}/availability?date=${dateString}`);
-        const data: ApiResponse<{ slots: { time: string; status: AvailabilityStatus }[] }> = await response.json();
+        const response = await apiClient.get(`/api/spaces/${spaceId}/availability?date=${dateString}`);
+        const data: ApiResponse<{ slots: { time: string; status: AvailabilityStatus }[] }> = response.data;
 
         // Map backend slots to frontend format, marking past slots as unavailable
         const slots = (data.data?.slots || []).map((slot) => ({

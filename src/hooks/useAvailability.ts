@@ -6,6 +6,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { AvailabilityResponse, SpaceAvailability } from '@/types/availability';
 import type { ApiResponse } from '@/types/api';
+import { apiClient } from '@/lib/api/client';
 
 interface UseAvailabilityResult {
   availability: Map<string, SpaceAvailability>;
@@ -24,8 +25,8 @@ export function useAvailability(datetime: Date): UseAvailabilityResult {
   const fetchAvailability = useCallback(async () => {
     try {
       const url = `/api/availability?datetime=${datetime.toISOString()}`;
-      const response = await fetch(url);
-      const data: ApiResponse<AvailabilityResponse> = await response.json();
+      const response = await apiClient.get(url);
+      const data: ApiResponse<AvailabilityResponse> = response.data;
 
       if (data.data) {
         const availabilityMap = new Map<string, SpaceAvailability>();

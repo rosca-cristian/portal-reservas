@@ -98,8 +98,8 @@ export default function Spaces() {
   const loadSpaces = async (floorId: string) => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/spaces?floor=${floorId}`);
-      const data: ApiResponse<Space[]> = await response.json();
+      const response = await apiClient.get(`/api/spaces?floor=${floorId}`);
+      const data: ApiResponse<Space[]> = response.data;
 
       if (data.data) {
         // Add floor association to spaces
