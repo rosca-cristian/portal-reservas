@@ -35,5 +35,11 @@
       "@types/*": ["./src/types/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "src/test",
+    "src/__mocks__"
+  ]
 }
