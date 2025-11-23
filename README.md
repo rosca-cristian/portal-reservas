@@ -53,7 +53,12 @@ cp .env.example .env
 
 Editar `.env` con los valores correspondientes:
 ```env
+# Para desarrollo local con backend local
 VITE_API_BASE_URL=http://localhost:3000
+
+# Para desarrollo con API en producción
+VITE_API_BASE_URL=https://api-cursos-reservas.onrender.com
+
 VITE_POLL_INTERVAL_MS=30000
 ```
 
@@ -102,12 +107,15 @@ src/
 
 ### Variables de Entorno
 
-Asegúrate de configurar estas variables en tu plataforma de despliegue:
+Configura estas variables de entorno en tu plataforma de despliegue (Vercel/Netlify/etc.):
 
-```env
-VITE_API_BASE_URL=<url-de-tu-backend>
-VITE_POLL_INTERVAL_MS=30000
-```
+| Variable | Valor | Descripción |
+|----------|-------|-------------|
+| `VITE_API_BASE_URL` | `https://api-cursos-reservas.onrender.com` | URL del backend API |
+| `VITE_POLL_INTERVAL_MS` | `30000` | Intervalo de polling en milisegundos |
+
+**Importante**: En Vercel, estas variables se configuran en:
+- Dashboard → Tu Proyecto → Settings → Environment Variables
 
 ### Build
 
