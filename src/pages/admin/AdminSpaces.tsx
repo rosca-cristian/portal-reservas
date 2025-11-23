@@ -12,9 +12,10 @@ interface Space {
   name: string
   type: string
   capacity: number
-  floor: number
+  floor: number | { id: string; name: string; building: string } | null
   equipment: string[]
   status: 'available' | 'unavailable' | 'maintenance'
+  availabilityStatus?: 'AVAILABLE' | 'OCCUPIED' | 'UNAVAILABLE'
 }
 
 type SortField = 'name' | 'type' | 'capacity' | 'floor' | 'status'
@@ -84,8 +85,8 @@ export default function AdminSpaces() {
 
       // Special handling for floor object
       if (sortField === 'floor') {
-        aValue = typeof a.floor === 'object' ? a.floor?.name || '' : String(a.floor || '')
-        bValue = typeof b.floor === 'object' ? b.floor?.name || '' : String(b.floor || '')
+        aValue = typeof a.floor === 'object' && a.floor ? a.floor.name || '' : String(a.floor || '')
+        bValue = typeof b.floor === 'object' && b.floor ? b.floor.name || '' : String(b.floor || '')
       }
 
       if (typeof aValue === 'string' && typeof bValue === 'string') {

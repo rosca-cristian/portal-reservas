@@ -24,16 +24,16 @@ export default function TimeSlotSelector({
   selectedTime,
   onTimeSelect,
 }: TimeSlotSelectorProps) {
-  const dateStr = format(date, 'yyyy-MM-dd');
-  const { data: availability, isLoading } = useAvailability(spaceId, dateStr);
+  const { availability, loading } = useAvailability(date);
   const timeSlots = generateTimeSlots();
 
   const isSlotOccupied = (time: string): boolean => {
-    if (!availability) return false;
-    return availability.occupiedSlots?.includes(time) || false;
+    const spaceAvail = availability.get(spaceId);
+    if (!spaceAvail) return false;
+    return spaceAvail.status === 'OCCUPIED';
   };
 
-  if (isLoading) {
+  if (loading) {
     return <div className="text-center py-4 text-gray-600">Loading availability...</div>;
   }
 

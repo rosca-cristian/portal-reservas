@@ -32,6 +32,7 @@ export default function ReviewAndConfirmationStep({
 
     // Calculate end time (start time + duration)
     const [hours] = stepOne.startTime.split(':');
+    const endHour = parseInt(hours) + (stepOne.duration || 1);
 
     const startDateTime = new Date(stepOne.date);
     startDateTime.setHours(parseInt(hours), 0, 0, 0);
