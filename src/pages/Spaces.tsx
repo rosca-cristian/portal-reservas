@@ -23,6 +23,7 @@ import { useAvailability } from '@/hooks/useAvailability';
 import { useSpaceSearch } from '@/hooks/useSpaceSearch';
 import type { Space, Floor } from '@/types/space';
 import type { ApiResponse } from '@/types/api';
+import { apiClient } from '@/lib/api/client';
 
 export default function Spaces() {
   const [floors, setFloors] = useState<Floor[]>([]);
@@ -77,8 +78,8 @@ export default function Spaces() {
   const loadFloors = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/floors');
-      const data: ApiResponse<Floor[]> = await response.json();
+      const response = await apiClient.get('/api/floors');
+      const data: ApiResponse<Floor[]> = response.data;
 
       if (data.data && data.data.length > 0) {
         setFloors(data.data);

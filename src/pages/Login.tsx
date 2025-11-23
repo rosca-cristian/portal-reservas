@@ -288,7 +288,7 @@ export default function Login() {
             </div>
             <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full" style={{ background: '#A8E6D4' }}></span>
-              <span>Admin: adminspaceflow@demo.com</span>
+              <span>Admin: admin@demo.com</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full" style={{ background: '#A8E6FF' }}></span>
